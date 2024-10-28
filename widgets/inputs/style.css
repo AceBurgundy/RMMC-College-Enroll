@@ -1,0 +1,23 @@
+.string-field-group {
+  width: fit-content;
+}
+
+.string-field-group > input {
+  background-color: var(--input);
+  border-radius: 3px;
+  border: 1px solid #bababa;
+  padding: 0.5rem;
+  width: 300px;
+}
+
+.string-field-group > p {
+  font-size: 0.8rem;
+}
+
+.string-field__error {
+  color: red;
+}
+
+.string-field__info {
+  color: #4e4e4e;
+}

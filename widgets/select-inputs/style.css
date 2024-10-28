@@ -1,0 +1,27 @@
+.radio-field-group {
+  width: fit-content;
+}
+
+.radio-field__label {
+  font-size: 0.9rem;
+}
+
+.control-field-group > p {
+  font-size: 0.8rem;
+}
+
+.control-field__error {
+  color: red;
+}
+
+.control-field__info {
+  color: #4e4e4e;
+}
+
+.select-field__input {
+  background-color: white;
+  border: 1px solid #bfbfbf;
+  border-radius: 3px;
+  padding: 0.3rem 0.5rem;
+  width: 300px;
+}
