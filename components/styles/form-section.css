@@ -7,11 +7,7 @@
   border-radius: 10px;
 }
 
-.form__section > .form__section__input-group {
-  border-bottom: 1px solid #e0e0e0;
-}
-
-.form__section > .form__section__input-group:last-child {
+.form__section__input-group:last-child {
   border-bottom: unset;
 }
 
@@ -19,7 +15,7 @@
   padding: 1rem;
   border-radius: 10px 10px 0 0;
   font-weight: 500;
-  background-color: #f9fafb;
+  background-color: var(--input);
   font-size: 0.9rem;
 }
 
