@@ -1,4 +1,5 @@
 import { Component, uniqueId } from '../Component.js';
+import ParentGuardianForm from './ParentGuardianData.js';
 import PersonalDetails from './PersonalDetails.js';
 import PreviousScholasticData from './PreviousScholasticData.js';
 import YearCourseSemester from './YearCourseSemester.js';
@@ -23,7 +24,8 @@ export default class EnrollmentForm extends Component {
           [
             new YearCourseSemester(),
             new PersonalDetails(),
-            new PreviousScholasticData()
+            new PreviousScholasticData(),
+            new ParentGuardianForm()
           ].join('')
         }
       </form>
