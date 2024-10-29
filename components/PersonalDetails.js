@@ -2,6 +2,7 @@ import { Component, css } from '../Component.js';
 import SelectField from '../widgets/select-inputs/SelectField.js';
 import RadioField from '../widgets/select-inputs/RadioField.js';
 import StringField from '../widgets/inputs/StringField.js';
+import NumberField from '../widgets/inputs/NumberField.js';
 
 css(import.meta, [
   "./styles/form-section.css"
@@ -217,266 +218,273 @@ export default class PersonalDetails extends Component {
 
     this.template = /*html*/`
       <div class="form__section">
-
+    
         <div class="form__section__title">
           Personal Details
         </div>
-
+    
         <div class="two-column">
-          <div>
-            <div class="form__section__input-group">
-              <div class="form__section__input-group__left column gap">
-                <p>Given Name</p>
-                <p>Provide your complete given name</p>
-              </div>
-              <div class="form__section__input-group__right column left">
-                ${
-                  new StringField({
-                    name: "given-name",
-                    required: true,
-                    placeholder: "Juan"
-                  })
-                }
-              </div>
+          <div class="form__section__input-group">
+            <div class="form__section__input-group__left column gap">
+              <p>Given Name</p>
+              <p>Provide your complete given name.</p>
             </div>
-
-            <div class="form__section__input-group">
-              <div class="form__section__input-group__left column gap">
-                <p>Middle Name</p>
-                <p>Provide your complete middle name</p>
-              </div>
-              <div class="form__section__input-group__right column left">
-                ${
-                  new StringField({
-                    name: "middle-name",
-                    required: true,
-                    placeholder: "Crisostomo"
-                  })
-                }
-              </div>
+            <div class="form__section__input-group__right column left">
+              ${
+                new StringField({
+                  name: "given-name",
+                  required: true,
+                  placeholder: "Juan",
+                  info: "Please enter your first name."
+                })
+              }
             </div>
-
-            <div class="form__section__input-group">
-              <div class="form__section__input-group__left column gap">
-                <p>Last Name</p>
-                <p>Provide your complete last name</p>
-              </div>
-              <div class="form__section__input-group__right column left">
-                ${
-                  new StringField({
-                    name: "last-name",
-                    required: true,
-                    placeholder: "Dela Cruz"
-                  })
-                }
-              </div>
-            </div>
-
-            <div class="form__section__input-group">
-              <div class="form__section__input-group__left column gap">
-                <p>Citizenship</p>
-                <p>Provide your citizenship</p>
-              </div>
-              <div class="form__section__input-group__right column left">
-                ${
-                  new StringField({
-                    name: "citizenship",
-                    placeholder: "FILIPINO"
-                  })
-                }
-              </div>
-            </div>
-
-            <div class="form__section__input-group">
-              <div class="form__section__input-group__left column gap">
-                <p>Address</p>
-                <p>Provide your complete address</p>
-              </div>
-              <div class="form__section__input-group__right column left">
-                ${
-                  new StringField({
-                    name: "complete-address",
-                    placeholder: "block, lot, street, subdivision, barangay, city, province, region"
-                  })
-                }
-              </div>
-            </div>
-
-            <div class="form__section__input-group">
-              <div class="form__section__input-group__left column gap">
-                <p>Civil Status</p>
-                <p>Select your civil status</p>
-              </div>
-              <div class="form__section__input-group__right column left">
-                ${
-                  new RadioField({
-                    name: "civil-status",
-                    options: ["Single", "Married", "Widowed"]
-                  })
-                }
-              </div>
-            </div>
-
-            <div class="form__section__input-group">
-              <div class="form__section__input-group__left column gap">
-                <p>Gender</p>
-                <p>Select a gender</p>
-              </div>
-              <div class="form__section__input-group__right column left">
-                ${
-                  new RadioField({
-                    name: "gender",
-                    options: ["Male", "Female"]
-                  })
-                }
-              </div>
-            </div>
-
-            <div class="form__section__input-group">
-              <div class="form__section__input-group__left column gap">
-                <p>Indigenous?</p>
-                <p>Mark if you are a member of the indigenous community</p>
-              </div>
-              <div class="form__section__input-group__right column left">
-                ${
-                  new RadioField({
-                    name: "gender",
-                    options: ["Yes", "No"]
-                  })
-                }
-              </div>
-            </div>
-
           </div>
-
-          <div>
-
-            <div class="form__section__input-group">
-              <div class="form__section__input-group__left column gap">
-                <p>Email</p>
-                <p>Enter a working email</p>
-              </div>
-              <div class="form__section__input-group__right column left">
-                ${
-                  new StringField({
-                    name: "email",
-                    placeholder: "Juandelacruz@gmail.com",
-                    info: "This email will be used to send you updates, newsletter and notifications from the school or about your enrollment"
-                  })
-                }
-              </div>
+      
+          <div class="form__section__input-group">
+            <div class="form__section__input-group__left column gap">
+              <p>Middle Name</p>
+              <p>Provide your complete middle name.</p>
             </div>
-
-            <div class="form__section__input-group">
-              <div class="form__section__input-group__left column gap">
-                <p>Ethnicity</p>
-                <p>Choose your ethnicity</p>
-              </div>
-              <div class="form__section__input-group__right column left">
-                ${
-                  new SelectField({
-                    name: "ethnic",
-                    options: selectData.ethnic
-                  })
-                }
-              </div>
+            <div class="form__section__input-group__right column left">
+              ${
+                new StringField({
+                  name: "middle-name",
+                  required: true,
+                  placeholder: "Crisostomo",
+                  info: "Enter your middle name."
+                })
+              }
             </div>
-
-            <div class="form__section__input-group">
-              <div class="form__section__input-group__left column gap">
-                <p>Dialect</p>
-                <p>Choose your dialect</p>
-              </div>
-              <div class="form__section__input-group__right column left">
-                ${
-                  new SelectField({
-                    name: "dialect",
-                    options: selectData.dialects
-                  })
-                }
-              </div>
-            </div>
-
-            <div class="form__section__input-group">
-              <div class="form__section__input-group__left column gap">
-                <p>Religion</p>
-                <p>Choose your religion</p>
-              </div>
-              <div class="form__section__input-group__right column left">
-                ${
-                  new SelectField({
-                    name: "religion",
-                    options: selectData.religions
-                  })
-                }
-              </div>
-            </div>
-
-            <div class="form__section__input-group">
-              <div class="form__section__input-group__left column gap">
-                <p>Birth Place</p>
-                <p>Provide your complete birth place</p>
-              </div>
-              <div class="form__section__input-group__right column left">
-                ${
-                  new StringField({
-                    name: "birth-place",
-                    placeholder: "General Santos City"
-                  })
-                }
-              </div>
-            </div>
-
-            <div class="form__section__input-group">
-              <div class="form__section__input-group__left column gap">
-                <p>Contact Number</p>
-                <p>Provide a working contact number</p>
-              </div>
-              <div class="form__section__input-group__right column left">
-                ${
-                  new StringField({
-                    name: "contact-number",
-                    placeholder: "XXXXXXXXXXX",
-                    info: "Contact number must be accesible"
-                  })
-                }
-              </div>
-            </div>
-
-            <div class="form__section__input-group">
-              <div class="form__section__input-group__left column gap">
-                <p>Entry Type</p>
-                <p>Choose what your enrollment is for</p>
-              </div>
-              <div class="form__section__input-group__right column left">
-                ${
-                  new RadioField({
-                    name: "entry-type",
-                    options: ["New", "Transferee", "Returnee"]
-                  })
-                }
-              </div>
-            </div>
-
-            <div class="form__section__input-group">
-              <div class="form__section__input-group__left column gap">
-                <p>Documents</p>
-                <p>Choose what documents are you able to submit</p>
-              </div>
-              <div class="form__section__input-group__right column left">
-                ${
-                  new SelectField({
-                    name: "documents",
-                    multiple: true,
-                    options: ["F137", "BC", "GMC", "M-contract", "OTR", "F138/card", "HD"]
-                  })
-                }
-              </div>
-            </div>
-
           </div>
-
+      
+          <div class="form__section__input-group">
+            <div class="form__section__input-group__left column gap">
+              <p>Last Name</p>
+              <p>Provide your complete last name.</p>
+            </div>
+            <div class="form__section__input-group__right column left">
+              ${
+                new StringField({
+                  name: "last-name",
+                  required: true,
+                  placeholder: "Dela Cruz",
+                  info: "Enter your last name."
+                })
+              }
+            </div>
+          </div>
+      
+          <div class="form__section__input-group">
+            <div class="form__section__input-group__left column gap">
+              <p>Citizenship</p>
+              <p>Provide your citizenship.</p>
+            </div>
+            <div class="form__section__input-group__right column left">
+              ${
+                new StringField({
+                  name: "citizenship",
+                  placeholder: "FILIPINO",
+                  info: "Enter your citizenship."
+                })
+              }
+            </div>
+          </div>
+      
+          <div class="form__section__input-group">
+            <div class="form__section__input-group__left column gap">
+              <p>Address</p>
+              <p>Provide your complete address.</p>
+            </div>
+            <div class="form__section__input-group__right column left">
+              ${
+                new StringField({
+                  name: "complete-address",
+                  placeholder: "Block, Lot, Street, Subdivision, Barangay, City, Province, Region",
+                  info: "Provide your full residential address."
+                })
+              }
+            </div>
+          </div>
+      
+          <div class="form__section__input-group">
+            <div class="form__section__input-group__left column gap">
+              <p>Civil Status</p>
+              <p>Select your civil status.</p>
+            </div>
+            <div class="form__section__input-group__right column left">
+              ${
+                new RadioField({
+                  name: "civil-status",
+                  options: ["Single", "Married", "Widowed"],
+                  info: "Choose your current civil status."
+                })
+              }
+            </div>
+          </div>
+      
+          <div class="form__section__input-group">
+            <div class="form__section__input-group__left column gap">
+              <p>Gender</p>
+              <p>Select a gender.</p>
+            </div>
+            <div class="form__section__input-group__right column left">
+              ${
+                new RadioField({
+                  name: "gender",
+                  options: ["Male", "Female"],
+                  info: "Select your gender."
+                })
+              }
+            </div>
+          </div>
+      
+          <div class="form__section__input-group">
+            <div class="form__section__input-group__left column gap">
+              <p>Indigenous?</p>
+              <p>Mark if you are a member of the indigenous community.</p>
+            </div>
+            <div class="form__section__input-group__right column left">
+              ${
+                new RadioField({
+                  name: "indigenous",
+                  options: ["Yes", "No"],
+                  info: "Indicate if you belong to an indigenous community."
+                })
+              }
+            </div>
+          </div>
+      
+          <div class="form__section__input-group">
+            <div class="form__section__input-group__left column gap">
+              <p>Email</p>
+              <p>Enter a working email.</p>
+            </div>
+            <div class="form__section__input-group__right column left">
+              ${
+                new StringField({
+                  name: "email",
+                  placeholder: "Juandelacruz@gmail.com",
+                  info: "This email will be used for updates, newsletters, and notifications from the school."
+                })
+              }
+            </div>
+          </div>
+      
+          <div class="form__section__input-group">
+            <div class="form__section__input-group__left column gap">
+              <p>Ethnicity</p>
+              <p>Choose your ethnicity.</p>
+            </div>
+            <div class="form__section__input-group__right column left">
+              ${
+                new SelectField({
+                  name: "ethnic",
+                  options: selectData.ethnic,
+                  info: "Select your ethnic background."
+                })
+              }
+            </div>
+          </div>
+      
+          <div class="form__section__input-group">
+            <div class="form__section__input-group__left column gap">
+              <p>Dialect</p>
+              <p>Choose your dialect.</p>
+            </div>
+            <div class="form__section__input-group__right column left">
+              ${
+                new SelectField({
+                  name: "dialect",
+                  options: selectData.dialects,
+                  info: "Select your primary dialect."
+                })
+              }
+            </div>
+          </div>
+      
+          <div class="form__section__input-group">
+            <div class="form__section__input-group__left column gap">
+              <p>Religion</p>
+              <p>Choose your religion.</p>
+            </div>
+            <div class="form__section__input-group__right column left">
+              ${
+                new SelectField({
+                  name: "religion",
+                  options: selectData.religions,
+                  info: "Select your religious affiliation."
+                })
+              }
+            </div>
+          </div>
+      
+          <div class="form__section__input-group">
+            <div class="form__section__input-group__left column gap">
+              <p>Birth Place</p>
+              <p>Provide your complete birth place.</p>
+            </div>
+            <div class="form__section__input-group__right column left">
+              ${
+                new StringField({
+                  name: "birth-place",
+                  placeholder: "General Santos City",
+                  info: "Enter the city or town where you were born."
+                })
+              }
+            </div>
+          </div>
+      
+          <div class="form__section__input-group">
+            <div class="form__section__input-group__left column gap">
+              <p>Contact Number</p>
+              <p>Provide a working contact number.</p>
+            </div>
+            <div class="form__section__input-group__right column left">
+              ${
+                new NumberField({
+                  name: "contact-number",
+                  placeholder: "XXXXXXXXXXX",
+                  info: "Ensure your contact number is accessible."
+                })
+              }
+            </div>
+          </div>
+      
+          <div class="form__section__input-group">
+            <div class="form__section__input-group__left column gap">
+              <p>Entry Type</p>
+              <p>Choose what your enrollment is for.</p>
+            </div>
+            <div class="form__section__input-group__right column left">
+              ${
+                new RadioField({
+                  name: "entry-type",
+                  options: ["New", "Transferee", "Returnee"],
+                  info: "Select how you are enrolling."
+                })
+              }
+            </div>
+          </div>
+      
+          <div class="form__section__input-group">
+            <div class="form__section__input-group__left column gap">
+              <p>Documents</p>
+              <p>Choose what documents you are able to submit.</p>
+            </div>
+            <div class="form__section__input-group__right column left">
+              ${
+                new SelectField({
+                  name: "documents",
+                  multiple: true,
+                  options: ["F137", "BC", "GMC", "M-contract", "OTR", "F138/card", "HD"],
+                  info: "Select all applicable documents."
+                })
+              }
+            </div>
+          </div>
         </div>
+    
       </div>
     `;
   }

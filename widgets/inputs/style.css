@@ -21,3 +21,10 @@
 .string-field__info {
   color: #4e4e4e;
 }
+
+/* xs */
+@media screen and (orientation: portrait) {
+  .string-field-group {
+    width: 100%;
+  }
+}

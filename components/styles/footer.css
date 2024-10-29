@@ -1,0 +1,9 @@
+.form-footer > p:first-child {
+    font-size: 2rem;
+}
+
+.form-footer > p:last-child {
+    font-size: 0.9rem;
+    margin-top: 0.5rem;
+    color: rgb(126, 126, 126);
+}

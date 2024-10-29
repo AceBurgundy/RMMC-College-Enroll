@@ -44,3 +44,20 @@
 .form__section__input-group__right {
   padding: 1rem;
 }
+
+/* xs */
+@media screen and (orientation: portrait) {
+  .form__section {
+    border-radius: unset;
+  }
+  
+  .form__section__input-group {
+    display: grid;
+    grid-template-columns: 1fr;
+    padding: 0.5rem;
+  }
+
+  .form__section__input-group__right {
+    padding: unset;
+  }
+}

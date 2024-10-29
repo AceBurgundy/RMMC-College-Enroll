@@ -1,7 +1,6 @@
 import { Component, css } from '../Component.js';
 
 import SelectField from '../widgets/select-inputs/SelectField.js';
-import RadioField from '../widgets/select-inputs/RadioField.js';
 import StringField from '../widgets/inputs/StringField.js';
 
 css(import.meta, [
@@ -29,7 +28,7 @@ export default class PreviousScholasticData extends Component {
         "2011-2012", "2012-2013", "2013-2014", "2014-2015", "2015-2016", "2016-2017", "2017-2018",
         "2018-2019", "2019-2020", "2020-2021", "2021-2022", "2022-2023", "2023-2024"
       ],
-    }
+    };
 
     this.template = /*html*/`
       <div class="form__section">
@@ -39,142 +38,152 @@ export default class PreviousScholasticData extends Component {
         </div>
 
         <div class="two-column">
-
-            <div class="form__section__input-group">
-              <div class="form__section__input-group__left column gap">
-                <p>Elementary Completed</p>
-                <p>Choose where you completed elementary</p>
-              </div>
-              <div class="form__section__input-group__right column left">
-                ${
-                  new StringField({
-                    name: "elementary-school-name",
-                    placeholder: "X Elementary School"
-                  })
-                }
-              </div>
+          <div class="form__section__input-group">
+            <div class="form__section__input-group__left column gap">
+              <p>Elementary Completed</p>
+              <p>Choose where you completed elementary education.</p>
             </div>
-
-            <div class="form__section__input-group">
-              <div class="form__section__input-group__left column gap">
-                <p>Section</p>
-                <p>Choose what section you were during elementary</p>
-              </div>
-              <div class="form__section__input-group__right column left">
-                ${
-                  new StringField({
-                    name: "elementary-school-section",
-                    placeholder: "hanay"
-                  })
-                }
-              </div>
+            <div class="form__section__input-group__right column left">
+              ${
+                new StringField({
+                  name: "elementary-school-name",
+                  placeholder: "X Elementary School",
+                  info: "Enter the name of your elementary school."
+                })
+              }
             </div>
+          </div>
 
-            <div class="form__section__input-group">
-              <div class="form__section__input-group__left column gap">
-                <p>School Year</p>
-                <p>Choose what year you completed elementary</p>
-              </div>
-              <div class="form__section__input-group__right column left">
-                ${
-                  new SelectField({
-                    name: "elementary-school-year",
-                    options: selectData.elementarySchoolYears
-                  })
-                }
-              </div>
+          <div class="form__section__input-group">
+            <div class="form__section__input-group__left column gap">
+              <p>Section</p>
+              <p>Specify your section during elementary school.</p>
             </div>
+            <div class="form__section__input-group__right column left">
+              ${
+                new StringField({
+                  name: "elementary-school-section",
+                  placeholder: "e.g., Hanay",
+                  info: "Enter your section name in elementary school."
+                })
+              }
+            </div>
+          </div>
 
-            <div class="form__section__input-group">
-              <div class="form__section__input-group__left column gap">
-                <p>Junior High Completed</p>
-                <p>Choose where you completed junior high</p>
-              </div>
-              <div class="form__section__input-group__right column left">
-                ${
-                  new StringField({
-                    name: "junior-high-school-name",
-                    placeholder: "X Junior-high School"
-                  })
-                }
-              </div>
+          <div class="form__section__input-group">
+            <div class="form__section__input-group__left column gap">
+              <p>School Year</p>
+              <p>Select the year you completed elementary education.</p>
             </div>
+            <div class="form__section__input-group__right column left">
+              ${
+                new SelectField({
+                  name: "elementary-school-year",
+                  options: selectData.elementarySchoolYears,
+                  info: "Choose the school year of your elementary completion."
+                })
+              }
+            </div>
+          </div>
 
-            <div class="form__section__input-group">
-              <div class="form__section__input-group__left column gap">
-                <p>School Address</p>
-                <p>Provide where your school was located</p>
-              </div>
-              <div class="form__section__input-group__right column left">
-                ${
-                  new StringField({
-                    name: "junior-high-school-address",
-                    placeholder: "block, lot, street, subdivision, barangay, city, province, region"
-                  })
-                }
-              </div>
+          <div class="form__section__input-group">
+            <div class="form__section__input-group__left column gap">
+              <p>Junior High Completed</p>
+              <p>Specify where you completed junior high education.</p>
             </div>
+            <div class="form__section__input-group__right column left">
+              ${
+                new StringField({
+                  name: "junior-high-school-name",
+                  placeholder: "X Junior High School",
+                  info: "Enter the name of your junior high school."
+                })
+              }
+            </div>
+          </div>
 
-            <div class="form__section__input-group">
-              <div class="form__section__input-group__left column gap">
-                <p>School Year</p>
-                <p>Choose what year you completed junior high</p>
-              </div>
-              <div class="form__section__input-group__right column left">
-                ${
-                  new SelectField({
-                    name: "junior-high-school-year",
-                    options: selectData.higherSchoolYears
-                  })
-                }
-              </div>
+          <div class="form__section__input-group">
+            <div class="form__section__input-group__left column gap">
+              <p>School Address</p>
+              <p>Provide the address of your junior high school.</p>
             </div>
+            <div class="form__section__input-group__right column left">
+              ${
+                new StringField({
+                  name: "junior-high-school-address",
+                  placeholder: "Block, Lot, Street, etc.",
+                  info: "Enter the full address of your junior high school."
+                })
+              }
+            </div>
+          </div>
 
-            <div class="form__section__input-group">
-              <div class="form__section__input-group__left column gap">
-                <p>Senior High Completed</p>
-                <p>Choose where you completed senior high</p>
-              </div>
-              <div class="form__section__input-group__right column left">
-                ${
-                  new StringField({
-                    name: "senior-high-school-name",
-                    placeholder: "X Senior-high School"
-                  })
-                }
-              </div>
+          <div class="form__section__input-group">
+            <div class="form__section__input-group__left column gap">
+              <p>School Year</p>
+              <p>Select the year you completed junior high education.</p>
             </div>
+            <div class="form__section__input-group__right column left">
+              ${
+                new SelectField({
+                  name: "junior-high-school-year",
+                  options: selectData.higherSchoolYears,
+                  info: "Choose the school year of your junior high completion."
+                })
+              }
+            </div>
+          </div>
 
-            <div class="form__section__input-group">
-              <div class="form__section__input-group__left column gap">
-                <p>School Address</p>
-                <p>Provide where your school was located</p>
-              </div>
-              <div class="form__section__input-group__right column left">
-                ${
-                  new StringField({
-                    name: "senior-high-school-address",
-                    placeholder: "block, lot, street, subdivision, barangay, city, province, region"
-                  })
-                }
-              </div>
+          <div class="form__section__input-group">
+            <div class="form__section__input-group__left column gap">
+              <p>Senior High Completed</p>
+              <p>Specify where you completed senior high education.</p>
             </div>
+            <div class="form__section__input-group__right column left">
+              ${
+                new StringField({
+                  name: "senior-high-school-name",
+                  placeholder: "X Senior High School",
+                  info: "Enter the name of your senior high school."
+                })
+              }
+            </div>
+          </div>
 
-            <div class="form__section__input-group">
-              <div class="form__section__input-group__left column gap">
-                <p>School Year</p>
-                <p>Choose what year you completed senior high</p>
-              </div>
-              <div class="form__section__input-group__right column left">
-                ${
-                  new SelectField({
-                    name: "senior-high-school-year",
-                    options: selectData.higherSchoolYears
-                  })
-                }
-              </div>
+          <div class="form__section__input-group">
+            <div class="form__section__input-group__left column gap">
+              <p>School Address</p>
+              <p>Provide the address of your senior high school.</p>
             </div>
-         </div>
+            <div class="form__section__input-group__right column left">
+              ${
+                new StringField({
+                  name: "senior-high-school-address",
+                  placeholder: "Block, Lot, Street, etc.",
+                  info: "Enter the full address of your senior high school."
+                })
+              }
+            </div>
+          </div>
+
+          <div class="form__section__input-group">
+            <div class="form__section__input-group__left column gap">
+              <p>School Year</p>
+              <p>Select the year you completed senior high education.</p>
+            </div>
+            <div class="form__section__input-group__right column left">
+              ${
+                new SelectField({
+                  name: "senior-high-school-year",
+                  options: selectData.higherSchoolYears,
+                  info: "Choose the school year of your senior high completion."
+                })
+              }
+            </div>
+          </div>
+        </div>
+        
+      </div>
     `;
   }
 }

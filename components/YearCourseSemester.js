@@ -1,5 +1,6 @@
 import { Component, css } from '../Component.js';
 import SelectField from '../widgets/select-inputs/SelectField.js';
+import NumberField from '../widgets/inputs/NumberField.js';
 import CourseSelect from './CourseSelect.js';
 
 css(import.meta, [
@@ -39,8 +40,8 @@ export default class YearCourseSemester extends Component {
               ${new CourseSelect()}
             </div>
           </div>
-          <div>
-            <div class="form__section__input-group">
+
+          <div class="form__section__input-group">
             <div class="form__section__input-group__left column gap">
               <p>Semester</p>
               <p>Select a semester your course will be enrolled at</p>
@@ -63,15 +64,30 @@ export default class YearCourseSemester extends Component {
             <div class="form__section__input-group__right row center left">
               ${
                 new SelectField({
-                  name: "scool-year",
+                  name: "school-year",
                   options: selectData.schoolYear
                 })
               }
             </div>
           </div>
+
+          <div class="form__section__input-group">
+            <div class="form__section__input-group__left column gap">
+              <p>Entrance Exam Results</p>
+              <p>Provide your entrance exam score</p>
+            </div>
+            <div class="form__section__input-group__right column left">
+              ${
+                new NumberField({
+                  name: "entrance-exam-result",
+                  required: true,
+                  placeholder: "0"
+                })
+              }
+            </div>
           </div>
         </div>
-
+              
       </div>
     `;
   }
