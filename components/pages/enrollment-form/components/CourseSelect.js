@@ -1,4 +1,4 @@
-import { Component, uniqueId } from '../Component.js';
+import { Component, uniqueId } from '../../../../Component.js';
 
 export default class CourseSelect extends Component {
   constructor() {

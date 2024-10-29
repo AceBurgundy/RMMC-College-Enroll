@@ -15,12 +15,12 @@
 }
 
 .control-field__info {
-  color: #4e4e4e;
+  color: var(--input-info);
 }
 
 .select-field__input {
-  background-color: white;
-  border: 1px solid #bfbfbf;
+  background-color: var(--input);
+  border: 1px solid var(--border);
   border-radius: 3px;
   padding: 0.3rem 0.5rem;
   width: 300px;

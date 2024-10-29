@@ -1,4 +1,4 @@
 import { Root } from './Component.js';
-import EnrollmentForm from './components/EnrollmentForm.js';
+import EnrollmentForm from './components/pages/enrollment-form/EnrollmentForm.js';
 
-new Root({ destination: EnrollmentForm }).render();
+new Root({ component: EnrollmentForm }).render();

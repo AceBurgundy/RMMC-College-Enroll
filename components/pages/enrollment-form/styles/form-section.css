@@ -1,9 +1,9 @@
 .form__section {
   width: 100%;
-  background-color: white;
+  background-color: var(--background);
   display: flex;
   flex-direction: column;
-  border: 1px solid #e0e0e0;
+  border: 1px solid var(--border);
   border-radius: 10px;
 }
 
@@ -38,7 +38,7 @@
 
 .form__section__input-group__left > p:last-child {
   font-size: 0.8rem;
-  color: #4e4e4e;
+  color: var(--input-info);
 }
 
 .form__section__input-group__right {
@@ -50,7 +50,7 @@
   .form__section {
     border-radius: unset;
   }
-  
+
   .form__section__input-group {
     display: grid;
     grid-template-columns: 1fr;

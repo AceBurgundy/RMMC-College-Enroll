@@ -1,8 +1,6 @@
-import { Component, css } from "../Component.js";
+import { Component, css } from "../../../../Component.js";
 
-css(import.meta, [
-    "./styles/header.css"
-]);
+css(import.meta, ["../styles/header.css"]);
 
 export default class FormHeader extends Component {
     constructor() {

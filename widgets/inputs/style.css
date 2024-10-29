@@ -5,7 +5,7 @@
 .string-field-group > input {
   background-color: var(--input);
   border-radius: 3px;
-  border: 1px solid #bababa;
+  border: 1px solid var(--border);
   padding: 0.5rem;
   width: 300px;
 }
@@ -19,7 +19,7 @@
 }
 
 .string-field__info {
-  color: #4e4e4e;
+  color: var(--input-info);
 }
 
 /* xs */
