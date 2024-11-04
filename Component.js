@@ -68,6 +68,7 @@ export function redirect({ path, component, componentArgument }) {
   // Uses the cached data
   if (path in history) {
     const { component, componentArgument } = history[path];
+
     finalComponent = component;
     finalComponentArgument = componentArgument;
   } else {
