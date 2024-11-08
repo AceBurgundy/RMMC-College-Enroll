@@ -235,9 +235,8 @@ export const uniqueId = () => Math.random().toString(36).substring(2, 10);
  * 3. Adding other folder/file names to `path`.
  * 4. Creating a `<link>` tag for each resolved CSS path and appending it to `<head>`.
  **/
-export const css = (importMeta, cssPaths) => {
+export function css(importMeta, cssPaths) {
   cssPaths.forEach(cssPath => {
-    // Get the base directory path of the calling script
     let path = getFullPath(importMeta);
 
     cssPath.split("/").forEach(part => {
@@ -251,17 +250,20 @@ export const css = (importMeta, cssPaths) => {
           : path;              // Current directory `.` is ignored
     });
 
-    // Remove trailing slash if the path points to a file (not a directory)
     path = path.slice(0, !cssPath.endsWith("/") ? -1 : path.length);
+
+    // Check if the CSS file is already loaded
+    if (document.head.querySelector(`link[rel='stylesheet'][href='${path}']`) ) {
+      return;
+    }
 
     // Create and append a link element for the CSS file
     const styleLink = document.createElement("link");
     styleLink.rel = "stylesheet";
     styleLink.href = path;
-
     document.head.appendChild(styleLink);
   });
-};
+}
 
 // Using ES2022 features for private fields
 export class Component {
