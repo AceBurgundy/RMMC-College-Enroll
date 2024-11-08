@@ -78,6 +78,7 @@ if ($result->num_rows == 0) {
       email VARCHAR(255) NOT NULL UNIQUE,
       birth_place VARCHAR(255) DEFAULT NULL,
       contact_number VARCHAR(20) DEFAULT NULL,
+      profile_image TEXT DEFAULT NULL
       elementary_school_name VARCHAR(255) DEFAULT NULL,
       elementary_school_section VARCHAR(255) DEFAULT NULL,
       junior_high_school_name VARCHAR(255) DEFAULT NULL,
@@ -143,15 +144,11 @@ try {
   // Generate new id_number
   $stmt = $pdo->query("SELECT id_number FROM students ORDER BY id DESC LIMIT 1");
   $lastIdNumber = $stmt->fetchColumn();
-  if ($lastIdNumber) {
-    $newIdNumber = $lastIdNumber + 1;
-  } else {
-    $newIdNumber = date('ym') . "00000"; // Starting ID if no records
-  }
+  $newIdNumber = $lastIdNumber ? $lastIdNumber + 1 : date('ym') . "00000";
 
   // Prepare SQL insert statement using prepared statements to avoid SQL injection
   $columns = array_keys($data);
-  $placeholders = array_map(fn($col) => ":$col", $columns);
+  $placeholders = array_map(fn($column) => ":$column", $columns);
 
   $sql = "INSERT INTO students (id_number, " . implode(", ", $columns) . ")
             VALUES (:id_number, " . implode(", ", $placeholders) . ")";
