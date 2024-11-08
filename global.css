@@ -7,7 +7,7 @@
   --secondary: #869df0;
   --background: #fafcfe;
   --input-info: #4e4e4e;
-  --accent: #7e9aff;
+  --accent: #0d5ef4;
   --border: #bfbfbf;
 }
 
@@ -18,7 +18,7 @@
   --secondary: #0f267b;
   --input: #292c3f;
   --input-info: #959595;
-  --accent: #0d34bf;
+  --accent: #0d5ef4;
   --border: #bfbfbf;
 }
 
@@ -42,9 +42,8 @@ body {
 button {
   background-color: var(--accent);
   padding: 0.5rem 1rem;
-  color: var(--text);
+  color: white;
   border: none;
-  font-size: 1rem;
   border-radius: 5px;
   cursor: pointer;
 }

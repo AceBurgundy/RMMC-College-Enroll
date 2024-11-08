@@ -1,4 +1,5 @@
 import { Component, css, uniqueId } from '../../Component.js';
+import { element } from '../../Helpers.js';
 
 css(import.meta, [
   "./style.css"
@@ -30,7 +31,7 @@ export default class NumberField extends Component {
     let [errorMessageId, message, setErrorMessage] = this.state('', 'string-field__error');
 
     this.scripts = () => {
-      const inputField = document.getElementById(inputId);
+      const inputField = element(`#${inputId}`);
 
       const evaluate = () => {
         const isEmpty = required && inputField.value.trim() === '';

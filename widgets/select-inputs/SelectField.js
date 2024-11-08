@@ -1,4 +1,5 @@
 import { Component, css, uniqueId } from '../../Component.js';
+import { element } from '../../Helpers.js';
 
 css(import.meta, [
   "style.css"
@@ -37,7 +38,7 @@ export default class SelectField extends Component {
     let [errorMessageId, message, setErrorMessage] = this.state('', 'select-field__error');
 
     this.scripts = () => {
-      const selectField = document.getElementById(selectId);
+      const selectField = element(`#${selectId}`);
 
       const evaluate = () => {
         const hasSelection = multiple

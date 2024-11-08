@@ -7,6 +7,7 @@ import PreviousScholasticData from './components/PreviousScholasticData.js';
 import StudentClinicalBasalData from './components/StudentClinicalBasalData.js';
 import YearCourseSemester from './components/YearCourseSemester.js';
 import Success from "../success/Success.js";
+import { element } from '../../../Helpers.js';
 
 export default class EnrollmentForm extends Component {
   constructor() {
@@ -15,7 +16,7 @@ export default class EnrollmentForm extends Component {
     const formId = `enrollment-form-${uniqueId()}`;
 
     this.scripts = () => {
-      const form = document.getElementById(formId);
+      const form = element(`#${formId}`);
 
       form.onsubmit = (event) => {
         event.preventDefault();

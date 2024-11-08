@@ -1,4 +1,5 @@
 import { Component, uniqueId } from '../../../../Component.js';
+import { element } from '../../../../Helpers.js';
 
 export default class CourseSelect extends Component {
   constructor() {
@@ -73,8 +74,8 @@ export default class CourseSelect extends Component {
     const selectId = `course-select-${uniqueId()}`;
 
     this.scripts = () => {
-      const radioContainer = document.getElementById(radioId);
-      const select = document.getElementById(selectId);
+      const radioContainer = element(`#${radioId}`);
+      const select = element(`#${selectId}`);
 
       radioContainer.addEventListener('change', (event) => {
         if (event.target.name === 'selected-course') {
