@@ -12,7 +12,7 @@ export const element = selectors => document.querySelector(selectors);
  * @param {string} selectors
  * @returns {HTMLElement}
  */
-export const elements = selectors => document.querySelector(selectors);
+export const elements = selectors => document.querySelectorAll(selectors);
 
 /**
  * Uses query selector on all elements;

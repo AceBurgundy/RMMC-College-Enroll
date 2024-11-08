@@ -1,4 +1,5 @@
 import { Component, css, uniqueId } from '../../Component.js';
+import { elements } from '../../Helpers.js';
 
 css(import.meta, [
   "style.css"
@@ -35,7 +36,7 @@ export default class RadioField extends Component {
     let [errorMessageId, message, setErrorMessage] = this.state('', 'radio-field__error');
 
     this.scripts = () => {
-      const radioButtons = document.querySelectorAll(`[name^="${name}"]`);
+      const radioButtons = elements(`[name^="${name}"]`);
 
       const evaluate = () => {
         const isSelected = Array.from(radioButtons).some(radio => radio.checked);
