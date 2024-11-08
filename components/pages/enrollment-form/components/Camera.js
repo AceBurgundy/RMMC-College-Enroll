@@ -18,7 +18,7 @@ export default class Camera extends Component {
       const capture = element("#capture-button");
       const reset = element("#reset-camera");
       const imageInput = element("#image-data")
-      const close = element("#camera-close");
+      const closeButton = element("#camera-close");
 
       function closeCamera() {
         cameraContainer.style.display = 'none';
@@ -39,7 +39,10 @@ export default class Camera extends Component {
               video.srcObject = stream;
               video.play();
             })
-            .catch(err => console.error("Error accessing camera: ", err));
+            .catch(error => {
+              alert("Error accessing camera");
+              console.error(error);
+            });
 
           return;
         }
@@ -72,7 +75,7 @@ export default class Camera extends Component {
         imageInput.value = '';
       }
 
-      close.onclick = () => closeCamera();
+      closeButton.onclick = () => closeCamera();
     }
 
     this.template = /*html*/`
@@ -90,7 +93,7 @@ export default class Camera extends Component {
           <button type="button" id="camera-close">Close</button>
         </div>
 
-        <input type="text" name="image" id="image-data" hidden>
+        <input type="text" name="profile_image" id="image-data" hidden>
       </div>
     `;
   }
