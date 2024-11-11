@@ -22,3 +22,7 @@
   object-fit: cover;
   border-radius: 0.5rem;
 }
+
+#camera-check {
+  display: none;
+}
