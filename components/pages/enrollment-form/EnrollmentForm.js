@@ -1,4 +1,4 @@
-import { Component, redirect, uniqueId } from '../../../Component.js';
+import { Component, css, redirect, uniqueId } from '../../../Component.js';
 
 import PreviousScholasticData from './components/PreviousScholasticData.js';
 import StudentClinicalBasalData from './components/StudentClinicalBasalData.js';
@@ -10,6 +10,10 @@ import FormHeader from './components/FormHeader.js';
 import Success from "../success/Success.js";
 
 import { element } from '../../../Helpers.js';
+
+css(import.meta, [
+  "./styles/enrollment-form.css"
+]);
 
 export default class EnrollmentForm extends Component {
   constructor() {
@@ -51,7 +55,7 @@ export default class EnrollmentForm extends Component {
     }
 
     this.template = /*html*/`
-      <form id="${formId}" class="container column gap-default">
+      <form id="${formId}" class="enrollment-form container column gap-default">
         ${
           [
             new FormHeader(),

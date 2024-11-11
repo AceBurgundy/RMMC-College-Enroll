@@ -22,8 +22,7 @@ export default class FormFooter extends Component {
 				<br><br>
 				<div class="row center spaced">
 					<div class="row center gap">
-						<input type="checkbox">
-						Yes, I Agree
+						<input type="checkbox" required> Yes, I Agree
 					</div>
 					<button type="submit">Submit</button>
 				</div>
