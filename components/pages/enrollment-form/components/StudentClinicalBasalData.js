@@ -1,9 +1,12 @@
 import { Component, css } from '../../../../Component.js';
+
 import StringField from '../../../../widgets/inputs/StringField.js';
 import SelectField from '../../../../widgets/select-inputs/SelectField.js';
 import InputGroup from './InputGroup.js';
 
-css(import.meta, ["../styles/form-section.css"]);
+css(import.meta, [
+  "../styles/form-section.css"
+]);
 
 export default class YearCourseSemester extends Component {
   constructor() {

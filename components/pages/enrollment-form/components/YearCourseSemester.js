@@ -1,11 +1,14 @@
 import { Component, css } from '../../../../Component.js';
+
 import SelectField from '../../../../widgets/select-inputs/SelectField.js';
 import NumberField from '../../../../widgets/inputs/NumberField.js';
 import CourseSelect from './CourseSelect.js';
 import InputGroup from './InputGroup.js';
 import Camera from './Camera.js';
 
-css(import.meta, ["../styles/form-section.css"]);
+css(import.meta, [
+  "../styles/form-section.css"
+]);
 
 export default class YearCourseSemester extends Component {
   constructor() {
@@ -68,7 +71,7 @@ export default class YearCourseSemester extends Component {
                 title: "Student Profile Image",
                 info: "Have your picture taken.",
                 inputs: new Camera()
-              }),
+              })
             ].join('')
           }
         </div>

@@ -4,7 +4,9 @@ import RadioField from '../../../../widgets/select-inputs/RadioField.js';
 import StringField from '../../../../widgets/inputs/StringField.js';
 import InputGroup from './InputGroup.js';
 
-css(import.meta, ["../styles/form-section.css"]);
+css(import.meta, [
+  "../styles/form-section.css"
+]);
 
 export default class ParentGuardianForm extends Component {
   constructor() {

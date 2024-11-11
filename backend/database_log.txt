@@ -1,0 +1,2 @@
+Database created successfully
+Table students created successfully

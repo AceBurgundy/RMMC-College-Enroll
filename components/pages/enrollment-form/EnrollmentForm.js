@@ -1,12 +1,14 @@
 import { Component, redirect, uniqueId } from '../../../Component.js';
-import FormFooter from './components/FormFooter.js';
-import FormHeader from './components/FormHeader.js';
-import ParentGuardianForm from './components/ParentGuardianData.js';
-import PersonalDetails from './components/PersonalDetails.js';
+
 import PreviousScholasticData from './components/PreviousScholasticData.js';
 import StudentClinicalBasalData from './components/StudentClinicalBasalData.js';
+import ParentGuardianForm from './components/ParentGuardianData.js';
 import YearCourseSemester from './components/YearCourseSemester.js';
+import PersonalDetails from './components/PersonalDetails.js';
+import FormFooter from './components/FormFooter.js';
+import FormHeader from './components/FormHeader.js';
 import Success from "../success/Success.js";
+
 import { element } from '../../../Helpers.js';
 
 export default class EnrollmentForm extends Component {
@@ -23,27 +25,26 @@ export default class EnrollmentForm extends Component {
 
         const formData = new FormData(form);
 
-        fetch('http://localhost/rmmc-enroll/backend/save.php', {
+        fetch('rmmc-enroll/backend/save.php', {
           method: 'POST',
           body: formData
         })
         .then(response => response.json())
         .then(data => {
           if (data.success === undefined) return;
+          if (!data.success) return alert(data.message);
+          const isStudentId = !isNaN(parseFloat(data.message)) && [...data.message.toString()].length === 9;
 
-          if (data.success, data.message, !isNaN(parseFloat(data.message)), [...data.message.toString()].length === 9) {
+          if (isStudentId) {
             return redirect({
               component: Success,
               componentArgument: { id_number: data.message },
               path: "/success"
             });
           }
-
-          if (!data.success) {
-            alert(data.message)
-          }
         })
         .catch(error => {
+          alert("Something went wrong");
           console.error('Error:', error);
         });
       };
@@ -63,6 +64,6 @@ export default class EnrollmentForm extends Component {
           ].join('')
         }
       </form>
-    `
+    `;
   }
 }

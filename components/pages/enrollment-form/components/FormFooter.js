@@ -1,12 +1,14 @@
 import { Component, css } from "../../../../Component.js";
 
-css(import.meta, ["../styles/footer.css"]);
+css(import.meta, [
+  "../styles/footer.css"
+]);
 
 export default class FormFooter extends Component {
   constructor() {
     super();
 
-    this.template = /*html*/ `
+    this.template = /*html*/`
       <section class="form-footer">
         <p>Data Privacy Agreement</p>
 				<br>

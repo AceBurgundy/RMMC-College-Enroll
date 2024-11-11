@@ -1,4 +1,5 @@
 import { Component, css } from '../../../../Component.js';
+
 import SelectField from '../../../../widgets/select-inputs/SelectField.js';
 import RadioField from '../../../../widgets/select-inputs/RadioField.js';
 import StringField from '../../../../widgets/inputs/StringField.js';
@@ -6,7 +7,9 @@ import NumberField from '../../../../widgets/inputs/NumberField.js';
 import EmailField from '../../../../widgets/inputs/EmailField.js';
 import InputGroup from './InputGroup.js';
 
-css(import.meta, ["../styles/form-section.css"]);
+css(import.meta, [
+  "../styles/form-section.css"
+]);
 
 export default class PersonalDetails extends Component {
   constructor() {
