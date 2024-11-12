@@ -1,2 +1,66 @@
 Database created successfully
 Table students created successfully
+Database created successfully
+Table students created successfully
+Database created successfully
+Table students created successfully
+Database created successfully
+Database created successfully
+Table students created successfully
+Database created successfully
+Table students created successfully
+Database created successfully
+Table students created successfully
+Database created successfully
+Table students created successfully
+Database created successfully
+Table students created successfully
+Column `selected_course` added to students table.
+Column `selected_course_details` added to students table.
+Column `semester` added to students table.
+Column `school_year` added to students table.
+Column `entrance_exam_result` added to students table.
+Column `given_name` added to students table.
+Column `middle_name` added to students table.
+Column `last_name` added to students table.
+Column `citizenship` added to students table.
+Column `complete_address` added to students table.
+Column `civil_status` added to students table.
+Column `gender` added to students table.
+Column `indigenous` added to students table.
+Column `email` added to students table.
+Column `ethnic` added to students table.
+Column `dialect` added to students table.
+Column `religion` added to students table.
+Column `birth_place` added to students table.
+Column `contact_number` added to students table.
+Column `entry_type` added to students table.
+Column `documents` added to students table.
+Column `elementary_school_name` added to students table.
+Column `elementary_school_section` added to students table.
+Column `elementary_school_year` added to students table.
+Column `junior_high_school_name` added to students table.
+Column `junior_high_school_address` added to students table.
+Column `junior_high_school_year` added to students table.
+Column `senior_high_school_name` added to students table.
+Column `senior_high_school_address` added to students table.
+Column `senior_high_school_year` added to students table.
+Column `parent_full_name` added to students table.
+Column `parent_contact_number` added to students table.
+Column `parent_address` added to students table.
+Column `parent_relationship` added to students table.
+Column `parent_house` added to students table.
+Column `guardian_full_name` added to students table.
+Column `guardian_contact_number` added to students table.
+Column `guardian_address` added to students table.
+Column `age` added to students table.
+Column `height` added to students table.
+Column `weight` added to students table.
+Column `blood_type` added to students table.
+Column `congenital_diseases` added to students table.
+Column `date_diagnosed` added to students table.
+Column `hospitalization_date_1` added to students table.
+Column `hospitalization_date_2` added to students table.
+Column `allergies` added to students table.
+Column `medication_1` added to students table.
+Column `medication_2` added to students table.
