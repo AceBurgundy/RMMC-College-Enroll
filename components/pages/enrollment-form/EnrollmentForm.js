@@ -24,6 +24,36 @@ export default class EnrollmentForm extends Component {
     this.scripts = () => {
       const form = element(`#${formId}`);
 
+      // Setup database columns
+      window.onload = event => {
+        event.preventDefault();
+
+        const formElements = Array.from(form.elements);
+        const uniqueNames = [
+          ...new Set(
+            formElements
+              .map(element => element.name)
+              .filter(name => name && name !== 'profile_image')
+            )
+          ];
+
+        const data = { columns: uniqueNames };
+
+        fetch('rmmc-enroll/backend/setup.php', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(data)
+        })
+        .then(response => response.json())
+        .then(data => {
+          if (data.success === undefined) return;
+          alert(data.message);
+        })
+        .catch(error => console.error('Error:', error));
+      };
+
       form.onsubmit = (event) => {
         event.preventDefault();
 
