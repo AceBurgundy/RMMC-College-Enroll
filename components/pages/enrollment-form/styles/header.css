@@ -11,3 +11,9 @@
     margin-top: 0.5rem;
     color: var(--input-info);
 }
+
+@media screen and (orientation: portrait) {
+    .form-header > p:first-child {
+        font-size: 2rem;
+    }
+}

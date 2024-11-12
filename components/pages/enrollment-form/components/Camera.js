@@ -34,10 +34,10 @@ export default class Camera extends Component {
       }
 
       function openCamera() {
-        cameraContainer.style.display = "flex";
-
         navigator.mediaDevices.getUserMedia({ video: true })
           .then(stream => {
+            cameraContainer.style.display = "flex";
+
             videoStream = stream;
             video.srcObject = stream;
             video.play();

@@ -78,7 +78,7 @@ export default class CourseSelect extends Component {
       const select = element(`#${selectId}`);
 
       radioContainer.addEventListener('change', (event) => {
-        if (event.target.name === 'selected-course') {
+        if (event.target.name === 'selected_course') {
           const selectedRadio = event.target.value;
           const options = selectData[selectedRadio] || [];
 
@@ -98,7 +98,7 @@ export default class CourseSelect extends Component {
                 <label class="radio-field__label">
                   <input
                     type="radio"
-                    name="selected-course"
+                    name="selected_course"
                     value="${option}"
                     class="radio-field__input">
                   ${option}
@@ -111,7 +111,7 @@ export default class CourseSelect extends Component {
 
         <div class="control-field-group column gap left">
           <select
-            name="selected-course-details"
+            name="selected_course_details"
             id="${selectId}"
             class="select-field__input">
             <option disabled selected>Select an option above</option>
