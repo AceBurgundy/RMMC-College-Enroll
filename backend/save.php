@@ -9,6 +9,8 @@ try {
   $pdo = new PDO('mysql:host=localhost;dbname=enroll', 'root', '');
   $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
+  // Converts lower cased snake case to Sentence cese
+  // Ex: middle_name to Middle name
   function formatString($string)
   {
     return ucwords(str_replace('_', ' ', $string));
@@ -17,21 +19,41 @@ try {
   // Check for required fields
   foreach (['given_name', 'middle_name', 'last_name', 'email'] as $field) {
     if (empty($_POST[$field])) {
-      echo json_encode(['success' => false, 'message' => formatString($field) . " is required"]);
+      echo json_encode([
+        'success' => false,
+        'message' => formatString($field) . " is required"
+      ]);
+
       exit;
     }
   }
 
   // Check if email already exists
-  $statement = $pdo->prepare("SELECT COUNT(*) FROM students WHERE email = :email");
+  $statement = $pdo->prepare("
+    SELECT COUNT(*)
+    FROM students
+    WHERE email = :email
+  ");
+
   $statement->execute(['email' => $_POST['email']]);
   if ($statement->fetchColumn() > 0) {
-    echo json_encode(['success' => false, 'message' => "Email already exists."]);
+    echo json_encode([
+      'success' => false,
+      'message' => "Email already exists."
+    ]);
+
     exit;
   }
 
   // Generate new id_number
-  $statement = $pdo->query("SELECT id_number FROM students ORDER BY id DESC LIMIT 1");
+  $statement = $pdo->query("
+    SELECT id_number
+    FROM students
+    ORDER BY id
+    DESC
+    LIMIT 1
+  ");
+
   $lastIdNumber = $statement->fetchColumn();
   $newIdNumber = $lastIdNumber ? $lastIdNumber + 1 : date('ym') . "00000";
 
@@ -73,10 +95,21 @@ try {
   $data = array_merge($_POST, ['id_number' => $newIdNumber]);
   $statement->execute($data);
 
-  echo json_encode(['success' => true, 'message' => $newIdNumber]);
+  echo json_encode([
+    'success' => true,
+    'message' => $newIdNumber
+  ]);
 
 } catch (PDOException $error) {
-  echo json_encode(['success' => false, 'message' => "Database error: " . $error->getMessage()]);
+  echo json_encode([
+    'success' => false,
+    'message' => "Database error: {$error->getMessage()}"
+  ]);
+
 } catch (Exception $error) {
-  echo json_encode(['success' => false, 'message' => "Error: " . $error->getMessage()]);
+  echo json_encode([
+    'success' => false,
+    'message' => "Error: {$error->getMessage()}"
+  ]);
+
 }
