@@ -1,10 +1,6 @@
 import { Component, css, uniqueId } from '../../Component.js';
 import { element } from '../../Helpers.js';
 
-css(import.meta, [
-  "style.css"
-]);
-
 /**
  * A custom component for creating a select field with options, multi-select support, and validation.
  *
@@ -25,6 +21,10 @@ export default class SelectField extends Component {
    */
   constructor({ name, required = false, options, multiple = false, placeholder, info }) {
     super();
+
+    css(import.meta, [
+      "style.css"
+    ]);
 
     if (!name) {
       throw new Error("name parameter cannot be empty");

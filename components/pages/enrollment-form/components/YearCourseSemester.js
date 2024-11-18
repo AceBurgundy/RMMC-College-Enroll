@@ -6,13 +6,13 @@ import CourseSelect from './CourseSelect.js';
 import InputGroup from './InputGroup.js';
 import Camera from './Camera.js';
 
-css(import.meta, [
-  "../styles/form-section.css"
-]);
-
 export default class YearCourseSemester extends Component {
   constructor() {
     super();
+
+    css(import.meta, [
+      "../styles/form-section.css"
+    ]);
 
     const selectData = {
       semester: [

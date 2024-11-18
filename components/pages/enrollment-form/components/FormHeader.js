@@ -1,12 +1,12 @@
 import { Component, css } from "../../../../Component.js";
 
-css(import.meta, [
-  "../styles/header.css"
-]);
-
 export default class FormHeader extends Component {
   constructor() {
     super();
+
+    css(import.meta, [
+      "../styles/header.css"
+    ]);
 
     this.template = /*html*/ `
       <section class="form-header">

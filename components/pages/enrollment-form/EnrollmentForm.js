@@ -11,13 +11,13 @@ import Success from "../success/Success.js";
 
 import { element } from '../../../Helpers.js';
 
-css(import.meta, [
-  "./styles/enrollment-form.css"
-]);
-
 export default class EnrollmentForm extends Component {
   constructor() {
     super();
+
+    css(import.meta, [
+      "./styles/enrollment-form.css"
+    ]);
 
     const formId = `enrollment-form-${uniqueId()}`;
 
@@ -67,9 +67,9 @@ export default class EnrollmentForm extends Component {
         .then(data => {
           if (data.success === undefined) return;
           if (!data.success) return alert(data.message);
-          const isStudentId = !isNaN(parseFloat(data.message)) && [...data.message.toString()].length === 9;
 
-          if (isStudentId) {
+          // If message is student id
+          if (!isNaN(parseFloat(data.message)) && [...data.message.toString()].length === 9) {
             return redirect({
               component: Success,
               componentArgument: { id_number: data.message },

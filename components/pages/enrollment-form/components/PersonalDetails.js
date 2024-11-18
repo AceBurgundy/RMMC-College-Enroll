@@ -7,13 +7,13 @@ import NumberField from '../../../../widgets/inputs/NumberField.js';
 import EmailField from '../../../../widgets/inputs/EmailField.js';
 import InputGroup from './InputGroup.js';
 
-css(import.meta, [
-  "../styles/form-section.css"
-]);
-
 export default class PersonalDetails extends Component {
   constructor() {
     super();
+
+    css(import.meta, [
+      "../styles/form-section.css"
+    ]);
 
     const selectData = {
       semester: [

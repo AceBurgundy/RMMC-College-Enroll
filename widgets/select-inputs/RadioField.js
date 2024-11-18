@@ -1,10 +1,6 @@
 import { Component, css, uniqueId } from '../../Component.js';
 import { elements } from '../../Helpers.js';
 
-css(import.meta, [
-  "style.css"
-]);
-
 /**
  * A custom component for creating a radio button field with options, multiple selection support, and validation.
  *
@@ -23,6 +19,10 @@ export default class RadioField extends Component {
    */
   constructor({ name, required, options, multiple, info }) {
     super();
+
+    css(import.meta, [
+      "style.css"
+    ]);
 
     if (!name) {
       throw new Error("name parameter cannot be empty");

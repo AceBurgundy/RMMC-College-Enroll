@@ -4,13 +4,13 @@ import SelectField from '../../../../widgets/select-inputs/SelectField.js';
 import StringField from '../../../../widgets/inputs/StringField.js';
 import InputGroup from './InputGroup.js';
 
-css(import.meta, [
-  "../styles/form-section.css"
-]);
-
 export default class PreviousScholasticData extends Component {
   constructor() {
     super();
+
+    css(import.meta, [
+      "../styles/form-section.css"
+    ]);
 
     const selectData = {
       elementarySchoolYears: [

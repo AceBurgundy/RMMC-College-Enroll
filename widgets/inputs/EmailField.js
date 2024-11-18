@@ -1,10 +1,6 @@
 import { Component, css, uniqueId } from '../../Component.js';
 import { element } from '../../Helpers.js';
 
-css(import.meta, [
-  "./style.css"
-]);
-
 /**
  * A custom component for creating an email input field with validation and error handling.
  *
@@ -22,6 +18,10 @@ export default class EmailField extends Component {
    */
   constructor({ name, required, placeholder, info }) {
     super();
+
+    css(import.meta, [
+      "./style.css"
+    ]);
 
     if (!name) {
       throw new Error("name parameter cannot be empty");

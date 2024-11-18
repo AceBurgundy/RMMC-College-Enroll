@@ -4,13 +4,13 @@ import StringField from '../../../../widgets/inputs/StringField.js';
 import SelectField from '../../../../widgets/select-inputs/SelectField.js';
 import InputGroup from './InputGroup.js';
 
-css(import.meta, [
-  "../styles/form-section.css"
-]);
-
 export default class YearCourseSemester extends Component {
   constructor() {
     super();
+
+    css(import.meta, [
+      "../styles/form-section.css"
+    ]);
 
     this.template = /*html*/`
       <div class="form__section">

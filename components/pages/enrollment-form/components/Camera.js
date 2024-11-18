@@ -1,13 +1,13 @@
 import { Component, css } from "../../../../Component.js";
 import { element } from "../../../../Helpers.js";
 
-css(import.meta, [
-  "../styles/camera.css"
-]);
-
 export default class Camera extends Component {
   constructor() {
     super();
+
+    css(import.meta, [
+      "../styles/camera.css"
+    ]);
 
     this.scripts = () => {
       let videoStream = null;
