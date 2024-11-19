@@ -11,14 +11,12 @@ function logger($message)
 
   if ($logFileDoesNotExist) {
     $handle = fopen($logFileName, 'w');
-
     if (!$handle)
       die("Error creating log file");
     fclose($handle);
   }
 
   $handle = fopen($logFileName, 'a');
-
   if (!$handle)
     die("Error opening log file");
   fwrite($handle, "$message\n");
@@ -31,39 +29,45 @@ $username = "root";
 $password = "";
 $database = "enroll";
 
-$connection = new mysqli($servername, $username, $password);
-if ($connection->connect_error)
-  die("Connection failed: " . $connection->connect_error);
+// Create database and table
+try {
+  $pdo = new PDO("mysql:host=$servername", $username, $password);
+  $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-// Create the database if it doesn't exist
-$sql = "SHOW DATABASES LIKE '$database'";
-$result = $connection->query($sql);
+  $noEnrollDatabaseYet = $pdo
+      ->query("SHOW DATABASES LIKE '$database'")
+      ->rowCount() <= 0;
 
-if ($result->num_rows <= 0) {
-  logger(
-    $connection->query("CREATE DATABASE $database") === TRUE
-    ? "Database created successfully"
-    : "Error creating database: $connection->error"
-  );
-}
+  if ($noEnrollDatabaseYet) {
+    $pdo->exec("CREATE DATABASE $database");
+    logger("Database created successfully");
+  }
 
-$connection->select_db($database);
+  $pdo->exec("USE $database");
+  $studentTableExist = $pdo
+      ->query("SHOW TABLES LIKE 'students'")
+      ->rowCount() == 0;
 
-// Create the students table if it doesn't exist
-$sql = "SHOW TABLES LIKE 'students'";
-$result = $connection->query($sql);
+  if ($studentTableExist) {
+    $pdo->exec("
+      CREATE TABLE IF NOT EXISTS students (
+        id INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+        id_number INT(10) DEFAULT NULL
+      )
+    ");
 
-if ($result->num_rows == 0) {
-  $sql = "CREATE TABLE IF NOT EXISTS students (
-            id INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
-            id_number INT(10) DEFAULT NULL
-          )";
+    logger("Table students created successfully");
+  }
 
-  logger(
-    $connection->query($sql) === TRUE
-    ? "Table students created successfully"
-    : "Error creating table: $connection->error"
-  );
+} catch (PDOException $error) {
+  logger("Database error: " . $error->getMessage());
+
+  echo json_encode([
+    'success' => false,
+    'message' => 'Database error.'
+  ]);
+
+  exit;
 }
 
 // Get JSON input
@@ -71,31 +75,51 @@ $data = json_decode(file_get_contents('php://input'), true);
 $columns = $data['columns'] ?? [];
 
 if (empty($columns)) {
-  echo json_encode(['success' => false, 'message' => 'No columns to process.']);
+  echo json_encode([
+    'success' => false,
+    'message' => 'No columns to process.'
+  ]);
+
   exit;
 }
 
-// Loop through each column name
-foreach ($columns as $column) {
-  $sql = "SHOW COLUMNS FROM students LIKE `$column`";
+try {
+  foreach ($columns as $column) {
+    $statement = $pdo->prepare("
+      SHOW COLUMNS
+      FROM students
+      LIKE :column
+    ");
 
-  if ($connection->query($sql)->num_rows == 0) {
-    // Create missing column
-    $alterTableSQL = "ALTER TABLE students ADD COLUMN `$column` TEXT DEFAULT NULL";
+    $statement->execute([':column' => $column]);
 
-    logger(
-      $connection->query($alterTableSQL) === TRUE
-      ? "Column `$column` added to students table."
-      : "Error adding column $column: $connection->error"
-    );
+    if ($statement->rowCount() == 0) {
+      $pdo->exec("
+        ALTER TABLE students
+        ADD COLUMN `$column`
+        TEXT
+        DEFAULT NULL
+      ");
+
+      logger("Column `$column` added to students table.");
+    }
   }
+
+  echo json_encode(
+    [
+      'success' => true,
+      'message' => 'Columns processed successfully.'
+    ]
+  );
+
+} catch (PDOException $error) {
+  logger("Error: " . $error->getMessage());
+
+  echo json_encode([
+    'success' => false,
+    'message' => 'Error processing columns.'
+  ]);
+
 }
 
-echo json_encode(
-  [
-    'success' => true,
-    'message' => 'Columns processed successfully.'
-  ]
-);
-
-$connection->close();
+$pdo = null;

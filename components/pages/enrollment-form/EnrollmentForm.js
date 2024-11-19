@@ -68,11 +68,10 @@ export default class EnrollmentForm extends Component {
           if (data.success === undefined) return;
           if (!data.success) return alert(data.message);
 
-          // If message is student id
-          if (!isNaN(parseFloat(data.message)) && [...data.message.toString()].length === 9) {
+          if (data.success && data.email) {
             return redirect({
               component: Success,
-              componentArgument: { id_number: data.message },
+              componentArgument: { email: data.email },
               path: "/success"
             });
           }

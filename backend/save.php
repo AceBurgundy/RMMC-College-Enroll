@@ -28,15 +28,12 @@ try {
     }
   }
 
-  // Check if email already exists
-  $statement = $pdo->prepare("
-    SELECT COUNT(*)
-    FROM students
-    WHERE email = :email
-  ");
+  $emailExists = $pdo
+      ->prepare("SELECT COUNT(*) FROM students WHERE email = :email")
+      ->execute(['email' => $_POST['email']])
+      ->fetchColumn() > 0;
 
-  $statement->execute(['email' => $_POST['email']]);
-  if ($statement->fetchColumn() > 0) {
+  if ($emailExists) {
     echo json_encode([
       'success' => false,
       'message' => "Email already exists."
@@ -44,18 +41,6 @@ try {
 
     exit;
   }
-
-  // Generate new id_number
-  $statement = $pdo->query("
-    SELECT id_number
-    FROM students
-    ORDER BY id
-    DESC
-    LIMIT 1
-  ");
-
-  $lastIdNumber = $statement->fetchColumn();
-  $newIdNumber = $lastIdNumber ? $lastIdNumber + 1 : date('ym') . "00000";
 
   // Process profile image if present
   if (!empty($_POST['profile_image'])) {
@@ -79,6 +64,8 @@ try {
     unset($_POST['profile_image']);
   }
 
+  unset($_POST['profile_image']);
+
   // Insert data without id_number in $_POST
   $columns = array_keys($_POST);
   $placeholders = array_map(fn($column) => ":$column", $columns);
@@ -92,12 +79,12 @@ try {
   );
 
   // Execute with id_number separately
-  $data = array_merge($_POST, ['id_number' => $newIdNumber]);
+  $data = array_merge($_POST, ['id_number' => null]);
   $statement->execute($data);
 
   echo json_encode([
     'success' => true,
-    'message' => $newIdNumber
+    'email' => $_POST['email']
   ]);
 
 } catch (PDOException $error) {
@@ -113,3 +100,5 @@ try {
   ]);
 
 }
+
+$pdo = null;
