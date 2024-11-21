@@ -23,7 +23,7 @@ window.onpopstate = () => {
  * @param {Object} options - The options need by the function.
  * @param {String} options.path - The window.location.pathname to be used ex: "/page"
  * @param {Component} options.component - The component to be rendered extended from Component class
- * @param {Object} options.componentArgument - The arguments for the component component [array will be spread, object will be used as is].
+ * @param {Object} options.componentArgument - The arguments for the component component [array will be spread, object will be used as is.
  */
 export function redirect({ path, component, componentArgument }) {
   const extendsComponent = value => Object.create(value.prototype) instanceof Component;
