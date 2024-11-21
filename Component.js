@@ -152,7 +152,7 @@ export class Link {
       }, 0);
 
       // Return anchor tag with unique ID
-      return /*html*/`<a href="${path}" id="${uniqueAnchorId}" ${cleanAttributes}>${innerHTML?? link}</a>`;
+      return /*html*/`<a href="${path}" id="${uniqueAnchorId}" ${cleanAttributes}>${innerHTML?? path}</a>`;
     };
 
     this.toString = () => render();
@@ -236,6 +236,14 @@ export const uniqueId = () => Math.random().toString(36).substring(2, 10);
  * 4. Creating a `<link>` tag for each resolved CSS path and appending it to `<head>`.
  **/
 export function css(importMeta, cssPaths) {
+  // // future improvement by creating warning when function is called outside component constructor
+  // const stack = new Error().stack;
+  // const calledFromScript = stack.split('\n').length <= 3;
+
+  // if (calledFromScript) {
+  //   console.error(`css function call for the following css paths: ${cssPaths.join(', ')} must be done inside a component constructor to improve speed and reduce FOUC`);
+  // }
+
   cssPaths.forEach(cssPath => {
     let path = getFullPath(importMeta);
 
